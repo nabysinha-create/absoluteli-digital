@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   ABSOLUTELI DIGITAL — Design tokens
+   Editorial / luxury creative-studio system. Tailwind v4 CSS-first config.
+------------------------------------------------------------------- */
+
+:root {
+  /* Neutral base */
+  --color-ivory: #f7f2e8;
+  --color-ivory-dim: #efe7d8;
+  --color-sand: #e8ddc9;
+  --color-sand-deep: #d8c9ab;
+
+  /* Dark / cinematic base */
+  --color-espresso: #1a1512;
+  --color-espresso-deep: #100d0b;
+  --color-charcoal: #262019;
+
+  /* Text on dark */
+  --color-cream: #f4ede1;
+  --color-cream-dim: #cbbfa9;
+
+  /* Brand accents */
+  --color-copper: #b06a3d;
+  --color-copper-light: #c9885f;
+  --color-burgundy: #5f2a2a;
+  --color-brown: #5b4636;
+
+  /* Line / border */
+  --color-line: #d9cbae;
+  --color-line-dark: #3a322a;
+
+  /* Luminous copper — glow/shadow effects only, brighter than the solid brand accent */
+  --color-glow: #e2924f;
+}
+
+@theme inline {
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+
+  --color-ivory: var(--color-ivory);
+  --color-ivory-dim: var(--color-ivory-dim);
+  --color-sand: var(--color-sand);
+  --color-sand-deep: var(--color-sand-deep);
+  --color-espresso: var(--color-espresso);
+  --color-espresso-deep: var(--color-espresso-deep);
+  --color-charcoal: var(--color-charcoal);
+  --color-cream: var(--color-cream);
+  --color-cream-dim: var(--color-cream-dim);
+  --color-copper: var(--color-copper);
+  --color-copper-light: var(--color-copper-light);
+  --color-burgundy: var(--color-burgundy);
+  --color-brown: var(--color-brown);
+  --color-line: var(--color-line);
+  --color-line-dark: var(--color-line-dark);
+  --color-glow: var(--color-glow);
+
+  /* Editorial oversized type scale (fluid) */
+  --text-display-xl: clamp(3rem, 3.2vw + 2.2rem, 7.5rem);
+  --text-display-lg: clamp(2.5rem, 2.6vw + 1.8rem, 5.5rem);
+  --text-display-md: clamp(2rem, 2vw + 1.4rem, 3.75rem);
+  --text-display-sm: clamp(1.5rem, 1.2vw + 1.1rem, 2.5rem);
+
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 1s ease forwards;
+  --animate-marquee: marquee 32s linear infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-espresso);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-copper);
+  color: var(--color-ivory);
+}
+
+/* Editorial heading rhythm shared across the site */
+.font-display {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01" 1;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------------
+   Creative-technology accents — used sparingly against dark sections.
+   Cinematic tungsten/copper glow, never neon.
+------------------------------------------------------------------- */
+
+.glow-border {
+  border: 1px solid color-mix(in srgb, var(--color-glow) 35%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-glow) 8%, transparent),
+    0 0 32px -12px color-mix(in srgb, var(--color-glow) 55%, transparent);
+}
+
+.glow-border-hover {
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.glow-border-hover:hover {
+  border-color: color-mix(in srgb, var(--color-glow) 55%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-glow) 12%, transparent),
+    0 0 40px -10px color-mix(in srgb, var(--color-glow) 70%, transparent);
+}
+
+.glass-panel {
+  background: color-mix(in srgb, var(--color-cream) 6%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, var(--color-cream) 14%, transparent);
+}
+
+.radial-glow {
+  background: radial-gradient(
+    55% 55% at 50% 35%,
+    color-mix(in srgb, var(--color-glow) 22%, transparent),
+    transparent 70%
+  );
+}
+
+.corner-marks {
+  position: relative;
+}
+.corner-marks::before,
+.corner-marks::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: color-mix(in srgb, var(--color-glow) 60%, transparent);
+  pointer-events: none;
+}
+.corner-marks::before {
+  top: 0;
+  left: 0;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.corner-marks::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
