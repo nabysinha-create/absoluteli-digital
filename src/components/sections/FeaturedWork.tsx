@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -5,12 +6,56 @@ import { WorkCard } from "@/components/ui/WorkCard";
 import { Button } from "@/components/ui/Button";
 import { FEATURED_WORK } from "@/data/work";
 
-// Homepage shows a curated set of four, with the priority industry (furniture &
-// interiors) as the large featured tile. The full set lives on /our-work.
-const featured = FEATURED_WORK.find((p) => p.slug === "lounge-beanbag")!;
-const secondary = FEATURED_WORK.filter(
-  (p) => p.slug === "botanical-skincare" || p.slug === "atelier-lookbook" || p.slug === "cafe-aesthetics"
+// Homepage shows a curated set of four. The full set lives on /our-work.
+// All tiles render at the same size in one grid — no oversized "hero" tile —
+// so nothing needs more than a moment to take in.
+const curated = FEATURED_WORK.filter(
+  (p) =>
+    p.slug === "lounge-beanbag" ||
+    p.slug === "botanical-skincare" ||
+    p.slug === "atelier-lookbook" ||
+    p.slug === "cafe-aesthetics"
 );
+
+// Two additional niche visuals shown as plain, non-clickable cards (no
+// dedicated case-study page behind them, unlike the WorkCard-driven tiles
+// above) — same visual treatment (border, hover zoom, Concept Project tag)
+// for consistency with the rest of the grid.
+const NICHE_VISUALS = [
+  {
+    label: "Fitness & Wellness",
+    title: "Focused Mindset",
+    image: "/images/work/featured/fitness-focus.jpg",
+  },
+  {
+    label: "Food & Beverage",
+    title: "Golden Infusion",
+    image: "/images/work/featured/beverage-infusion.jpg",
+  },
+];
+
+function NicheCard({ label, title, image }: { label: string; title: string; image: string }) {
+  return (
+    <div className="group flex flex-col gap-4">
+      <div className="glow-border-hover relative aspect-[4/5] w-full overflow-hidden border border-line-dark bg-sand">
+        <Image
+          src={image}
+          alt={`${title} — ${label}`}
+          fill
+          sizes="(min-width: 1024px) 30vw, 45vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+        <span className="eyebrow absolute left-4 top-4 rounded-full bg-espresso-deep/70 px-3 py-1 text-[10px] text-cream backdrop-blur-sm">
+          Concept Project
+        </span>
+      </div>
+      <div className="flex flex-col gap-1">
+        <span className="eyebrow text-copper-light">{label}</span>
+        <h3 className="font-display text-xl text-cream">{title}</h3>
+      </div>
+    </div>
+  );
+}
 
 export function FeaturedWork() {
   return (
@@ -23,25 +68,22 @@ export function FeaturedWork() {
           </Button>
         </Reveal>
 
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-stretch">
-          <Reveal className="lg:w-2/3">
-            <WorkCard
-              project={featured}
-              tone="dark"
-              variant="minimal"
-              aspectClassName="aspect-[4/5] lg:aspect-auto lg:flex-1"
-              className="lg:h-full"
-              sizes="(min-width: 1024px) 64vw, 90vw"
-            />
-          </Reveal>
-
-          <div className="flex flex-col gap-8 lg:w-1/3">
-            {secondary.map((project, i) => (
-              <Reveal key={project.slug} delay={0.1 + i * 0.08}>
-                <WorkCard project={project} tone="dark" variant="minimal" />
-              </Reveal>
-            ))}
-          </div>
+        <div className="grid grid-cols-2 gap-6 lg:grid-cols-3 md:gap-8">
+          {curated.map((project, i) => (
+            <Reveal key={project.slug} delay={0.06 * i}>
+              <WorkCard
+                project={project}
+                tone="dark"
+                variant="minimal"
+                sizes="(min-width: 1024px) 30vw, 45vw"
+              />
+            </Reveal>
+          ))}
+          {NICHE_VISUALS.map((item, i) => (
+            <Reveal key={item.title} delay={0.06 * (curated.length + i)}>
+              <NicheCard {...item} />
+            </Reveal>
+          ))}
         </div>
       </Container>
     </section>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { WorkHero } from "@/components/work/WorkHero";
 import { WorkGallery } from "@/components/work/WorkGallery";
 import { CreativeLab } from "@/components/work/CreativeLab";
@@ -17,9 +16,7 @@ export default function OurWorkPage() {
   return (
     <>
       <WorkHero />
-      <Suspense fallback={null}>
-        <WorkGallery />
-      </Suspense>
+      <WorkGallery />
       <CreativeLab />
       <CapabilitiesStrip />
       <FinalCTA
