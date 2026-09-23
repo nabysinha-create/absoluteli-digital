@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { NAV_LINKS, SITE_CONFIG } from "@/lib/constants";
 import { Logo } from "@/components/ui/Logo";
@@ -10,6 +13,11 @@ const LEGAL_LINKS = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+  // Same reasoning as Header: private presentation pages are self-contained,
+  // no site chrome linking back into the public marketing site.
+  if (pathname?.startsWith("/presentation")) return null;
+
   return (
     <footer className="bg-espresso text-cream">
       <Container className="flex flex-col gap-12 py-16 md:py-20">
