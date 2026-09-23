@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Reveal } from "@/components/ui/Reveal";
 import { Logo } from "@/components/ui/Logo";
 
-// Private, unlisted presentation page — not linked from anywhere on the
-// public site, not in NAV_LINKS, not in sitemap.ts, not part of the
-// /our-work case-study data. Discoverable only via this exact URL.
+// Unlisted concept page — not linked from anywhere on the public site, not
+// in NAV_LINKS, not in sitemap.ts, not part of the /our-work case-study
+// data. Reachable only via this exact URL; not password/auth protected.
 export const metadata: Metadata = {
   title: "Tuka Holiday Homes — Private Concept",
   description: "A private creative concept presentation prepared by Absoluteli Digital.",
@@ -40,9 +40,9 @@ export default function TukaPresentationPage() {
               controls
               playsInline
               preload="metadata"
-              poster="/presentation/tuka-bfbac3a9/poster.jpg"
+              poster="/concepts/tuka/poster.jpg"
             >
-              <source src="/presentation/tuka-bfbac3a9/demo.mp4" type="video/mp4" />
+              <source src="/concepts/tuka/demo.mp4" type="video/mp4" />
             </video>
           </div>
         </Reveal>

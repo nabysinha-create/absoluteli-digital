@@ -27,10 +27,10 @@ export function Header() {
     };
   }, [menuOpen]);
 
-  // Private client-presentation pages are self-contained (no site nav) —
+  // Unlisted concept/presentation pages are self-contained (no site nav) —
   // hide the global header entirely there rather than surfacing links back
   // into the public marketing site.
-  if (pathname?.startsWith("/presentation")) return null;
+  if (pathname?.startsWith("/presentation") || pathname?.startsWith("/concepts")) return null;
 
   const solid = scrolled || menuOpen;
   // Only the homepage opens on a dark (video) hero — every other page opens on

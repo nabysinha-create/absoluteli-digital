@@ -14,9 +14,9 @@ const LEGAL_LINKS = [
 
 export function Footer() {
   const pathname = usePathname();
-  // Same reasoning as Header: private presentation pages are self-contained,
-  // no site chrome linking back into the public marketing site.
-  if (pathname?.startsWith("/presentation")) return null;
+  // Same reasoning as Header: unlisted concept/presentation pages are
+  // self-contained, no site chrome linking back into the public marketing site.
+  if (pathname?.startsWith("/presentation") || pathname?.startsWith("/concepts")) return null;
 
   return (
     <footer className="bg-espresso text-cream">
