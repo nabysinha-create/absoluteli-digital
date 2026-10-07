@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { LazyVideo } from "@/components/ui/LazyVideo";
+import { ClickToPlayVideo } from "@/components/ui/ClickToPlayVideo";
 import { LAB_PIECES } from "@/data/creative-lab";
 
 export function CreativeLab() {
@@ -21,25 +21,37 @@ export function CreativeLab() {
               className={`glow-border-hover group relative mb-4 block w-full overflow-hidden border border-transparent bg-sand break-inside-avoid ${piece.aspect}`}
             >
               {piece.video ? (
-                <LazyVideo
+                <ClickToPlayVideo
                   src={piece.video}
                   poster={piece.poster}
-                  mediaClassName="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  posterAlt={piece.title}
+                  sizes="(min-width: 1024px) 30vw, 45vw"
+                  overlay={
+                    <>
+                      <span className="absolute inset-0 bg-gradient-to-t from-espresso-deep/75 via-espresso-deep/0 to-espresso-deep/0" />
+                      <span className="eyebrow absolute left-4 top-4 rounded-full bg-espresso-deep/70 px-3 py-1 text-[10px] text-cream backdrop-blur-sm">
+                        {piece.category}
+                      </span>
+                      <span className="absolute inset-x-4 bottom-4 block text-left font-display text-lg text-cream">{piece.title}</span>
+                    </>
+                  }
                 />
               ) : (
-                <Image
-                  src={piece.image}
-                  alt={piece.title}
-                  fill
-                  sizes="(min-width: 1024px) 30vw, 45vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
+                <>
+                  <Image
+                    src={piece.image}
+                    alt={piece.title}
+                    fill
+                    sizes="(min-width: 1024px) 30vw, 45vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-espresso-deep/75 via-espresso-deep/0 to-espresso-deep/0" />
+                  <span className="eyebrow absolute left-4 top-4 rounded-full bg-espresso-deep/70 px-3 py-1 text-[10px] text-cream backdrop-blur-sm">
+                    {piece.category}
+                  </span>
+                  <p className="absolute inset-x-4 bottom-4 font-display text-lg text-cream">{piece.title}</p>
+                </>
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-espresso-deep/75 via-espresso-deep/0 to-espresso-deep/0" />
-              <span className="eyebrow absolute left-4 top-4 rounded-full bg-espresso-deep/70 px-3 py-1 text-[10px] text-cream backdrop-blur-sm">
-                {piece.category}
-              </span>
-              <p className="absolute inset-x-4 bottom-4 font-display text-lg text-cream">{piece.title}</p>
             </Reveal>
           ))}
         </div>
