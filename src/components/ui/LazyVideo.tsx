@@ -21,10 +21,12 @@ export function LazyVideo({
   src,
   poster,
   mediaClassName = "h-full w-full object-cover",
+  posterAlt = "",
 }: {
   src: string;
   poster?: string;
   mediaClassName?: string;
+  posterAlt?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -62,7 +64,7 @@ export function LazyVideo({
         // This is only the poster frame standing in until the real <video>
         // mounts, not a next/image-managed content asset.
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={poster} alt="" className={mediaClassName} />
+        <img src={poster} alt={posterAlt} className={mediaClassName} />
       ) : null}
     </div>
   );

@@ -26,6 +26,7 @@ export function MaterialFilm() {
           <PresentationFilm
             src="/images/work/furniture-campaign/section2-material.mp4"
             poster="/images/work/furniture-campaign/section2-material-poster.jpg"
+            posterAlt="Furniture craftsmanship and material detail film — preview frame before playback"
           />
         </Reveal>
       </Container>

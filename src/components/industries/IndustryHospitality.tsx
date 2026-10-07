@@ -13,7 +13,7 @@ export function IndustryHospitality() {
         <Reveal className="relative aspect-[16/9] w-full overflow-hidden md:aspect-[21/9]">
           <Image
             src="/images/industries-page/hospitality/banner.jpg"
-            alt=""
+            alt="Luxury resort infinity pool overlooking the ocean — hospitality campaign visual"
             fill
             sizes="90vw"
             className="object-cover"

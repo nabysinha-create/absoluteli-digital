@@ -18,6 +18,7 @@ export function HeroFilm() {
           <PresentationFilm
             src="/images/work/furniture-campaign/section1-demo.mp4"
             poster="/images/work/furniture-campaign/section1-demo-poster.jpg"
+            posterAlt="Styled bedroom furniture campaign film — preview frame before playback"
           />
         </Reveal>
 

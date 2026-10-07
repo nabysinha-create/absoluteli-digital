@@ -75,12 +75,13 @@ export function ServiceSocialContent() {
                       <LazyVideo
                         src={item.src}
                         poster={item.poster}
+                        posterAlt={`${item.label} — social content example by Absoluteli Digital`}
                         mediaClassName="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                     ) : (
                       <Image
                         src={item.src}
-                        alt=""
+                        alt={`${item.label} — social content example by Absoluteli Digital`}
                         fill
                         sizes="(min-width: 1024px) 22vw, 45vw"
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"

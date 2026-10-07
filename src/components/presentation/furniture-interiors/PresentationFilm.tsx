@@ -12,10 +12,12 @@ import Image from "next/image";
 export function PresentationFilm({
   src,
   poster,
+  posterAlt = "",
   emptyLabel = "Film Coming Soon",
 }: {
   src?: string;
   poster?: string;
+  posterAlt?: string;
   emptyLabel?: string;
 }) {
   const [playing, setPlaying] = useState(false);
@@ -50,7 +52,7 @@ export function PresentationFilm({
           {poster ? (
             <Image
               src={poster}
-              alt=""
+              alt={posterAlt}
               fill
               sizes="(min-width: 1024px) 70vw, 100vw"
               className="object-cover"

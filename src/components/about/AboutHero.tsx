@@ -63,7 +63,7 @@ export function AboutHero() {
           <div className="glow-border-hover absolute left-0 top-0 h-[78%] w-[78%] overflow-hidden border border-line-dark bg-sand">
             <Image
               src="/images/about/hero-large.jpg"
-              alt=""
+              alt="Digital illustration in progress on a graphics tablet"
               fill
               sizes="(min-width: 1024px) 32vw, 70vw"
               className="object-cover"
@@ -73,7 +73,7 @@ export function AboutHero() {
           <div className="corner-marks glow-border-hover absolute bottom-0 right-0 h-[52%] w-[52%] overflow-hidden border-4 border-ivory bg-sand">
             <Image
               src="/images/about/hero-corner.jpg"
-              alt=""
+              alt="Cinematographer filming with a professional cinema camera on set"
               fill
               sizes="(min-width: 1024px) 22vw, 50vw"
               className="object-cover"

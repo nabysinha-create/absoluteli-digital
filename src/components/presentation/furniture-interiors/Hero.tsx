@@ -45,7 +45,7 @@ export function Hero() {
           <div className="glow-border-hover relative aspect-[4/5] w-full overflow-hidden border border-line-dark bg-charcoal">
             <Image
               src="/images/work/furniture-campaign/transformed.jpg"
-              alt=""
+              alt="Furniture product photography transformed into a cinematic campaign visual"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               className="object-cover"

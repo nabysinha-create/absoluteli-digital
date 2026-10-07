@@ -55,7 +55,7 @@ export function ServiceCampaignCreative() {
               >
                 <Image
                   src={output.image}
-                  alt=""
+                  alt={`${output.label} — campaign output example by Absoluteli Digital`}
                   fill
                   sizes="(min-width: 1024px) 16vw, 30vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"

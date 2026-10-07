@@ -37,7 +37,7 @@ export function NewCreativePossibility() {
         <Reveal delay={0.2} className="glow-border-hover relative aspect-[16/9] w-full overflow-hidden border border-line-dark">
           <Image
             src="/images/about/new-possibility.jpg"
-            alt=""
+            alt="Absoluteli Digital creative team planning a campaign around a studio whiteboard"
             fill
             sizes="90vw"
             className="object-cover"

@@ -79,7 +79,7 @@ export function IndustriesHero() {
         >
           <Image
             src="/images/industries-page/hero/spectrum.jpg"
-            alt=""
+            alt="Professional camera and lighting equipment used for creative production"
             fill
             sizes="(min-width: 1024px) 40vw, 90vw"
             className="object-cover"
